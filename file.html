@@ -158,12 +158,12 @@
 
             geometry = new THREE.SphereGeometry( 40, 40, 40 );
 
-            for (var i = 0; i < 100; i++) {
+            for (var i = 0; i < 1000; i++) {
             	var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
 
-            	object.position.x = Math.random() * 1000 - 500;
-            	object.position.y = Math.random() * 1600 + 300;
-            	object.position.z = Math.random() * 800 - 400;
+            	object.position.x = Math.random() * 10800 - 5400;
+            	object.position.y = Math.random() * 10800 - 5400;
+            	object.position.z = Math.random() * 10800 - 5400;
 
             	object.castShadow = true;
             	object.receiveShadow = true;
