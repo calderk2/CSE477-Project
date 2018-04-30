@@ -22,6 +22,7 @@
           var reflectCubeMesh, noReflectCubeMesh;
     			var sphereMaterial;
     			var refract;
+          var torus;
 
     			init();
     			animate();
@@ -39,6 +40,7 @@
     				controls.maxDistance = 3500;
             controls.enableDamping = true;
             controls.dampingFactor = 0.25;
+            controls.keyPanSpeed = 30;
 
     				// SCENE
 
@@ -97,8 +99,7 @@
     				var geometry = new THREE.SphereBufferGeometry( 400.0, 48, 24 );
     				sphereMaterial = new THREE.MeshLambertMaterial( { envMap: textureCube } );
     				sphereMesh = new THREE.Mesh( geometry, sphereMaterial );
-
-    				scene.add( sphereMesh );
+                    scene.add( sphereMesh );
 
     				//
 
@@ -114,6 +115,19 @@
       			reflectCubeMesh = new THREE.Mesh(geometry, material);
       			reflectCubeMesh.position.x = -700;
       			scene.add(reflectCubeMesh);
+
+
+            //torus
+            var geometry = new THREE.TorusGeometry( 400, 60, 160, 100 );
+            var texture = new THREE.TextureLoader().load( "lava.jpg" );
+            var material = new THREE.MeshBasicMaterial( { map: texture } );
+            torus = new THREE.Mesh( geometry, material );
+            torus1 = new THREE.Mesh( geometry, material );
+            torus.rotation.x += 1.5;
+            torus1.rotation.x += 2.5;
+
+            scene.add( torus );
+            scene.add(torus1);
 
             //
 
@@ -173,10 +187,16 @@
     			}
 
     			function render() {
-            reflectCubeMesh.rotation.x += 0.01;
+                    reflectCubeMesh.rotation.x += 0.01;
     				reflectCubeMesh.rotation.y += 0.01;
     				noReflectCubeMesh.rotation.x -= 0.03;
     				noReflectCubeMesh.rotation.y -= 0.03;
+
+                    torus.rotation.x += 0.01;
+                    torus.rotation.y += 0.01;
+
+                    torus1.rotation.x -= 0.01;
+                    torus1.rotation.y -= 0.01;
 
     				camera.lookAt( scene.position );
     				cameraCube.rotation.copy( camera.rotation );
