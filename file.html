@@ -20,6 +20,7 @@
     			var textureCube;
     			var cubeMesh, sphereMesh;
           var reflectCubeMesh, noReflectCubeMesh;
+          var objects = [];
     			var sphereMaterial;
     			var refract;
           var torus;
@@ -41,6 +42,7 @@
             controls.enableDamping = true;
             controls.dampingFactor = 0.25;
             controls.keyPanSpeed = 30;
+            controls.enablePan = true;
 
     				// SCENE
 
@@ -151,6 +153,25 @@
                 });
 
             });
+
+            //
+
+            geometry = new THREE.SphereGeometry( 40, 40, 40 );
+
+            for (var i = 0; i < 100; i++) {
+            	var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+
+            	object.position.x = Math.random() * 1000 - 500;
+            	object.position.y = Math.random() * 1600 + 300;
+            	object.position.z = Math.random() * 800 - 400;
+
+            	object.castShadow = true;
+            	object.receiveShadow = true;
+
+            	scene.add( object );
+
+            	objects.push( object );
+            }
 
 
 
