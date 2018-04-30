@@ -104,16 +104,16 @@
                     scene.add( sphereMesh );
 
     				//
-
-            var geometry = new THREE.BoxGeometry( 400, 400, 400 );
-      			var material = new THREE.MeshPhongMaterial( { color: 0x00ff00 } );
-      			noReflectCubeMesh = new THREE.Mesh(geometry, material);
-            noReflectCubeMesh.position.x = 800;
-      			scene.add(noReflectCubeMesh);
+                    var geometry = new THREE.BoxGeometry(400, 400, 400);
+                    var texture = new THREE.TextureLoader().load('leopard.jpg');
+                    var material = new THREE.MeshBasicMaterial({ map: texture });
+                    noReflectCubeMesh = new THREE.Mesh(geometry, material);
+                    noReflectCubeMesh.position.x = 800;
+                    scene.add(noReflectCubeMesh);
 
             //
 
-            material = new THREE.MeshPhongMaterial({ color: 0xf00000, envMap: textureCube });
+                    material = new THREE.MeshPhongMaterial({ color: 0x8bf91d, envMap: textureCube });
       			reflectCubeMesh = new THREE.Mesh(geometry, material);
       			reflectCubeMesh.position.x = -700;
       			scene.add(reflectCubeMesh);
