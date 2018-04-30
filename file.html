@@ -125,11 +125,16 @@
             var material = new THREE.MeshBasicMaterial( { map: texture } );
             torus = new THREE.Mesh( geometry, material );
             torus1 = new THREE.Mesh( geometry, material );
+            torus2 = new THREE.Mesh( geometry, sphereMaterial );
+            torus2.scale.set(20.0, 20.0, 1.0);
+
+
             torus.rotation.x += 1.5;
             torus1.rotation.x += 2.5;
 
             scene.add( torus );
             scene.add(torus1);
+            scene.add(torus2);
 
             //
 
@@ -220,6 +225,8 @@
                     torus1.rotation.x -= 0.01;
                     torus1.rotation.y -= 0.01;
                     torus1.rotation.z -= 0.01;
+
+                    torus2.rotation.y += 0.01;
 
     				camera.lookAt( scene.position );
     				cameraCube.rotation.copy( camera.rotation );
